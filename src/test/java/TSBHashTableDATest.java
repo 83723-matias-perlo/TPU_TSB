@@ -27,6 +27,7 @@ public class TSBHashTableDATest {
         map.put("e", 5);
     }
 
+    // check
     @Test
     public void whenElementAreAddedRemoved_sizeChanges() {
         assertEquals(0, table.size());
@@ -82,6 +83,7 @@ public class TSBHashTableDATest {
         table.get(null);
     }
 
+    //check
     @Test
     public void testGet() {
         String key = "key";
@@ -101,6 +103,7 @@ public class TSBHashTableDATest {
         table.put("a", null);
     }
 
+    //check
     @Test
     public void testPut() {
         String key = "key";
@@ -128,11 +131,13 @@ public class TSBHashTableDATest {
         assertEquals("remove debería devolver el valor eliminado", Integer.valueOf(2), result);
     }
 
+    // checks
     @Test(expected = NullPointerException.class)
     public void whenPutAllCalledWithNull_thenThrow() {
         table.putAll(null);
     }
 
+    //check
     @Test(expected = NullPointerException.class)
     public void whenPutAllCalledWithMapWithNullKeys_thenThrow() {
         Map<String, Integer> m = Map.of("a", 1, null, 2);
@@ -176,6 +181,11 @@ public class TSBHashTableDATest {
         table.put("b", 1);
         assertEquals(2, keys.size());
         assertTrue(keys.contains("b"));
+
+        Iterator<String> it = keys.iterator();
+        while (it.hasNext()){
+            it.next();
+        }
         for (String key : keys) {
             verifier.check(key);
         }
@@ -207,6 +217,7 @@ public class TSBHashTableDATest {
         assertFalse(values.contains(1));
     }
 
+    //check
     @Test
     public void testEntrySet() {
 
@@ -217,7 +228,6 @@ public class TSBHashTableDATest {
         assertEquals(0, entries.size());
         addTestData();
         assertEquals(5, entries.size());
-
         for (var entry : entries) {
             keyVerifier.check(entry.getKey());
             valuesVerifier.check(entry.getValue());
@@ -228,6 +238,7 @@ public class TSBHashTableDATest {
         assertEquals(0, entries.size());
     }
 
+    // check
     @Test
     public void testEqualsAndHashcode() {
         TSBHashTableDA<String, Integer> other = new TSBHashTableDA<>();
